@@ -14,7 +14,7 @@ on:
 
 jobs:
   my_testing:
-    runs-on: ubuntu-latest1
+    runs-on: ubuntu-latest
     steps:
       - name: Print Hello Message in testing
         run: echo "Hello World from testing job"
@@ -26,7 +26,7 @@ jobs:
           echo "Application name: ${{ env.APPLICATION_NAME }}"
 
       - name: List current folder
-        run: ls -la
+      run: ls -la
 
       - name: Git clone my repo
         uses: actions/checkout@v1
