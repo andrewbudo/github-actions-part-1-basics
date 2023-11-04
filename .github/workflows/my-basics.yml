@@ -1,0 +1,23 @@
+#-----------------------------------
+# Github actions part-1 - Basics
+# Copyright (c) by Andrew Budo, 2023
+#-----------------------------------
+name: My-Github-Actions-Basics
+on:
+  push:
+    branches: 
+      - main
+jobs:
+  my_testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello Message
+        run: echo "Hello World from testing job"
+
+  my_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello Message
+        run: echo "Hello World from deploy job"
+      - 
+  
