@@ -7,4 +7,5 @@ Status of Last Deployment:<br>
 
 [![My-Github-Actions-Basics](https://github.com/andrewbudo/github-actions-part-1-basics/actions/workflows/my-basics.yml/badge.svg)](https://github.com/andrewbudo/github-actions-part-1-basics/actions/workflows/my-basics.yml)
 
+[![My-Github-Actions-Basics](https://github.com/andrewbudo/github-actions-part-1-basics/actions/workflows/my-basics.yml/badge.svg?branch=main)](https://github.com/andrewbudo/github-actions-part-1-basics/actions/workflows/my-basics.yml)
 
