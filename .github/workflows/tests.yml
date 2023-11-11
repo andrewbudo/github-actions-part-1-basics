@@ -20,6 +20,8 @@ jobs:
         uses: actions/checkout@v2
       - run: |
           sudo apt update && sudo apt install g++ -y
+          sudo apt install pandoc
+          pandoc -s README.md -f markdown -t docx -o output.docx
           g++ ./run.cpp -o run.out
 
       - name: Run tests
