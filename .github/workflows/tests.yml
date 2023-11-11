@@ -21,7 +21,7 @@ jobs:
       - run: |
           sudo apt update && sudo apt install g++ -y
           sudo apt install pandoc
-          pandoc -s README.md -f markdown -t docx -o output.docx
+          pandoc -s README.md -f markdown -t pdf -o output.pdf
           g++ ./run.cpp -o run.out
 
       - name: Run tests
@@ -47,6 +47,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./main.exe
-          asset_name: main-0.0.${{ github.run_number }}-Win.exe
+          asset_path: ./output.pdf
+          asset_name: output-0.0.${{ github.run_number }}-Win.pdf
           asset_content_type: application/vnd.debian.binary-package    
