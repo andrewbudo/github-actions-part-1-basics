@@ -21,6 +21,9 @@ jobs:
       - run: |
           sudo apt update && sudo apt install g++ -y
           g++ ./run.cpp -o run.out
+
+      - name: Run tests
+        run: ./run.out
       
       - name: List current folder
         run: ls -la      
@@ -42,6 +45,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./main-0.0.${{ github.run_number }}-Linux.deb
-          asset_name: main-0.0.${{ github.run_number }}-Linux.deb
+          asset_path: ./main.exe
+          asset_name: main-0.0.${{ github.run_number }}-Win.exe
           asset_content_type: application/vnd.debian.binary-package    
