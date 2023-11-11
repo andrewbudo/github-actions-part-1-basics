@@ -49,7 +49,7 @@ int main() {
             break;
         }
 
-        std::string run_command  = "main.exe < " + test_input + " > " + test_output;
+        std::string run_command  = "./main.exe < " + test_input + " > " + test_output;
         int compile_result = system(run_command.c_str());
 
         std::string compare_command = "cmp -s " + test_output + " " + expected_output;
