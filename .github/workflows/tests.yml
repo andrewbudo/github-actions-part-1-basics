@@ -2,15 +2,12 @@
 # Github actions part-1 - Basics
 # Copyright (c) by Andrew Budo, 2023
 #-----------------------------------
-name: My-Github-Actions-Basics
-env:
-  APPLICATION_NAME: "MyApp"
-  DEPLOY_PACKAGE_NAME: "app-deploy-ver-${{ github.sha }}"
+name: Test and Deploy
 
-#on:
-#  push:
-#    branches: 
-#      - main
+on:
+  push:
+    branches: 
+      - main
 
 jobs:
   my_testing:
