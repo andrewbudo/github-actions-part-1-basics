@@ -14,6 +14,10 @@ jobs:
           echo "dolor sit amet" > lorem_2.md
           mkdir output  # create output dir
           # this will also include README.md
+          echo "CODE HERE"
+          ls -la
+          cd ..
+          ls -la
           echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
       - uses: docker://pandoc/latex:2.9
         with:
