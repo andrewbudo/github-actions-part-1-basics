@@ -16,8 +16,12 @@ jobs:
           # this will also include README.md
           echo "CODE HERE"
           ls ./docs/ 
-          ls ../docs/ 
           echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
+          echo $GITHUB_OUTPUT
+          cd ./docs/
+          echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
+          echo $GITHUB_OUTPUT
+          cd ..
       - uses: docker://pandoc/latex:2.9
         with:
           args: --output=output/result.pdf ${{ steps.files_list.outputs.files }}
