@@ -15,7 +15,10 @@ jobs:
           sudo apt update
           sudo apt install g++ -y
           g++ run.cpp -o run.exe
-          zip --junk-paths my-artifact *.md run.exe
+          sudo apt install pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra texlive-xetex -y
+          pandoc 130.md -o 130.pdf --pdf-engine=xelatex
+          ls -la
+          zip --junk-paths my-artifact *.md run.exe *.pdf
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
