@@ -1,24 +1,41 @@
+#-----------------------------------
+# Github Actions Test and Deploy 
+# Copyright (c) by Andrew Budo, 2023
+#-----------------------------------
+name: Test and Deploy 
+
 on:
   push:
+    branches: 
+      - main
 
-name: Upload Release Asset
 
 jobs:
-  build:
+  my_docs:
     name: Upload Release Asset
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Build project # This would actually build your project, using zip for an example artifact
+
+      - name: Install soft
         run: |
-          sudo apt update
-          sudo apt install g++ -y
-          g++ run.cpp -o run.exe
+          sudo apt update && sudo apt install g++ -y
           sudo apt install pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra texlive-xetex texlive-lang-cyrillic -y
+
+      - name: Build my project # This would actually build your project, using zip for an example artifact
+        run: |
+          g++ run.cpp -o run.out
+
+      - name: Run my tests 
+        run: ./run.out
+
+      - name: Build docs
+        run: |
           pandoc 130.md -o 130.pdf --pdf-engine=xelatex -V mainfont="Liberation Serif"
           pandoc 130.md -o 130.docx
           zip --junk-paths my-artifact *.md run.exe *.pdf *.docx
+ 
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -29,6 +46,7 @@ jobs:
           release_name: Release ${{ github.run_number }}
           draft: false
           prerelease: false
+
       - name: Upload Release Asset
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
