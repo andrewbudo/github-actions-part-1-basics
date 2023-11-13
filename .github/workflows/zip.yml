@@ -37,7 +37,7 @@ jobs:
         run: |
           pandoc 130.md -o 130.pdf --pdf-engine=xelatex -V mainfont="Liberation Serif"
           pandoc 130.md -o 130.docx
-          zip --junk-paths my-artifact *.md run.exe *.pdf *.docx
+          zip --junk-paths my-artifact *.md run.out *.cpp *.pdf *.docx
  
       - name: Create Release
         id: create_release
