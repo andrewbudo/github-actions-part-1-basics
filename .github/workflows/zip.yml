@@ -1,6 +1,4 @@
-﻿name: zip
-
-on:
+﻿on:
   push:
 
 name: Upload Release Asset
