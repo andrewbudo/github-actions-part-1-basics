@@ -17,11 +17,8 @@ jobs:
           echo "CODE HERE"
           ls ./docs/ 
           echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
-          echo $GITHUB_OUTPUT
           cd ./docs/
-          echo "files=$(printf '"%s" ' *.md)" > $GITHUB_OUTPUT
-          echo $GITHUB_OUTPUT
-          cd ..
+          echo "files=$(printf '"%s" ' ./docs/*.md)" > $GITHUB_OUTPUT
       - uses: docker://pandoc/latex:2.9
         with:
           args: --output=output/result.pdf ${{ steps.files_list.outputs.files }}
