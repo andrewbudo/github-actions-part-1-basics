@@ -1,4 +1,4 @@
-﻿on:
+﻿0on:
   push:
 
 name: Upload Release Asset
@@ -15,15 +15,15 @@ jobs:
           sudo apt update
           sudo apt install g++ -y
           g++ run.cpp -o run.exe
-          sudo apt install pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra texlive-xetex -y
-          pandoc 130.md -o 130.pdf --pdf-engine=xelatex
+#          sudo apt install pandoc texlive-latex-base texlive-fonts-recommended texlive-extra-utils texlive-latex-extra texlive-xetex -y
+#          pandoc 130.md -o 130.pdf --pdf-engine=xelatex
           ls -la
           zip --junk-paths my-artifact *.md run.exe *.pdf
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.run_number }}
           release_name: Release ${{ github.run_number }}
